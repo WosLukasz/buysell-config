@@ -1,0 +1,55 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: "admin"
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: "jdbc:postgresql://localhost:3100/buysell_admin"
+    username: "buysell_admin"
+    password: "buysell_admin"
+  buysell-admin:
+    datasource:
+      driver-class-name: org.postgresql.Driver
+      jdbc-url: "jdbc:postgresql://localhost:3100/buysell_admin"
+      username: "buysell_admin"
+      password: "buysell_admin"
+  liquibase:
+    enabled: true
+    change-log: "classpath:db/master_changelog.xml"
+    default-schema: "public"
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+  config:
+    import: "configserver:http://localhost:8071"
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: "http://localhost:8180/realms/buysell/protocol/openid-connect/certs"
+
+buySell:
+  config:
+    appState: ACTIVE
+  test:
+    value: "tgest"
+
+keycloak:
+  realm: "buysell"
+  resource: "buysell_admin"
+  auth-server-url: "http://localhost:8180"
+  credentials:
+    secret: "**********"
+
+logging:
+  level:
+    ROOT: INFO
+    com.wosarch: DEBUG
