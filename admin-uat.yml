@@ -1,3 +1,6 @@
+server:
+  port: 8082
+
 spring:
   application:
     name: "admin"
@@ -26,6 +29,7 @@ spring:
     show-sql: true
   config:
     import: "configserver:http://localhost:8071"
+
   security:
     oauth2:
       resourceserver:
