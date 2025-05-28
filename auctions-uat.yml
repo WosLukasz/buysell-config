@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: "auctions"
+  main:
+    allow-bean-definition-overriding: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: "http://localhost:8180/realms/buysell/protocol/openid-connect/certs"
+
+synchronizations:
+  finishAuctions:
+    cron: 0 30 * * * *
+  activationAuctions:
+    cron: 0 0 * * * *
+  cleanerAuctions:
+    cron: 0 45 * * * *
+
+buySell:
+  config:
+    appState: ACTIVE
+    trashHoldDays: '30'
+    auctionDurationDays: '30'
+
+keycloak:
+  realm: "buysell"
+  resource: "buysell_admin"
+  auth-server-url: "http://localhost:8180"
+  credentials:
+    secret: "**********"
+
+elasticSearch:
+  buysell:
+    uri: "localhost:9200"
+    user: "elastic"
+    password: "esPassword"
+
+mongodb:
+  buysell:
+    uri: "mongodb://buysell:buysell@localhost:30001,localhost:30002,localhost:30003/buysell?replicaSet=replicasetName&retryWrites=false"
+    database: "buysell"
+
+logging:
+  level:
+    ROOT: INFO
+    com.wosarch: INFO
