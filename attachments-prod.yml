@@ -1,8 +1,6 @@
 spring:
   application:
     name: "attachments"
-  profiles:
-    active: prod
   main:
     allow-bean-definition-overriding: true
   datasource:

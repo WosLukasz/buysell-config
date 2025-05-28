@@ -1,8 +1,6 @@
 spring:
   application:
     name: "admin"
-  profiles:
-    active: test
   main:
     allow-bean-definition-overriding: true
   datasource:
