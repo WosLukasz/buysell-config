@@ -2,7 +2,7 @@ spring:
   application:
     name: "admin"
   profiles:
-    active: test
+    active: uat
   main:
     allow-bean-definition-overriding: true
   datasource:
@@ -38,7 +38,7 @@ buySell:
   config:
     appState: ACTIVE
   test:
-    value: "tgest"
+    value: "uat"
 
 keycloak:
   realm: "buysell"

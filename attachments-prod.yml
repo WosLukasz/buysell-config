@@ -1,9 +1,8 @@
-server:
-  port: 8082
-
 spring:
   application:
-    name: "admin"
+    name: "attachments"
+  profiles:
+    active: prod
   main:
     allow-bean-definition-overriding: true
   datasource:
@@ -29,18 +28,21 @@ spring:
     show-sql: true
   config:
     import: "configserver:http://localhost:8071"
-
   security:
     oauth2:
       resourceserver:
         jwt:
           jwk-set-uri: "http://localhost:8180/realms/buysell/protocol/openid-connect/certs"
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
 
 buySell:
   config:
     appState: ACTIVE
   test:
-    value: "tgest"
+    value: "prod"
 
 keycloak:
   realm: "buysell"
@@ -49,7 +51,13 @@ keycloak:
   credentials:
     secret: "**********"
 
+minio:
+  defaultBucket: "buysell"
+  secretKey: "YU0NnGwHOOOXbggvybcV4F5G4Pa1aSbf2zjMO0gN"
+  endpoint: "http://127.0.0.1:9000"
+  accessKey: "E6yd6BKVy0nUNJYB48Fe"
+
 logging:
   level:
     ROOT: INFO
-    com.wosarch: DEBUG
+    com.wosarch: INFO

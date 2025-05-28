@@ -1,9 +1,8 @@
-server:
-  port: 8082
-
 spring:
   application:
     name: "admin"
+  profiles:
+    active: prod
   main:
     allow-bean-definition-overriding: true
   datasource:
@@ -29,7 +28,6 @@ spring:
     show-sql: true
   config:
     import: "configserver:http://localhost:8071"
-
   security:
     oauth2:
       resourceserver:
