@@ -43,5 +43,5 @@ mongodb:
 
 logging:
   level:
-    ROOT: DEBUG
+    ROOT: INFO
     com.wosarch: DEBUG
