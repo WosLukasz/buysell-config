@@ -1,6 +1,11 @@
 server:
   port: 8072
 
+buySell:
+  cors:
+    allowedOrigins:
+      fontEnd: "http://localhost:4200"
+
 eureka:
   instance:
     preferIpAddress: true
