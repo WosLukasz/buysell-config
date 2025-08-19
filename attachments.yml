@@ -16,6 +16,9 @@ spring:
 buySell:
   config:
     appState: ACTIVE
+    techAccount:
+      clientId: "buysell_tech_user"
+      secretKey: "**********"
   test:
     value: "test"
 
@@ -25,6 +28,7 @@ keycloak:
   auth-server-url: "http://localhost:8180"
   credentials:
     secret: "**********"
+  token-uri-prefix: "http://localhost:8180/realms/buysell/protocol/openid-connect"
 
 minio:
   defaultBucket: "buysell"
