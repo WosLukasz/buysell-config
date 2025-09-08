@@ -7,13 +7,13 @@ spring:
   main:
     allow-bean-definition-overriding: true
   datasource:
-    url: "jdbc:postgresql://localhost:3100/buysell_admin"
+    url: "jdbc:postgresql://localhost:5433/buysell_admin"
     username: "buysell_admin"
     password: "buysell_admin"
   buysell-admin:
     datasource:
       driver-class-name: org.postgresql.Driver
-      jdbc-url: "jdbc:postgresql://localhost:3100/buysell_admin"
+      jdbc-url: "jdbc:postgresql://localhost:5433/buysell_admin"
       username: "buysell_admin"
       password: "buysell_admin"
   liquibase:
@@ -54,3 +54,5 @@ logging:
   level:
     ROOT: INFO
     com.wosarch: DEBUG
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
