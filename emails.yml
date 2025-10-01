@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: "emails"
+  main:
+    allow-bean-definition-overriding: true
+
+logging:
+  level:
+    ROOT: INFO
+    com.wosarch: DEBUG
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
